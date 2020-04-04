@@ -15,14 +15,12 @@ public class Merge {
                 rslIndex++;
                 continue;
             }
-
             if (rightIndex == right.length) {
                 rsl[rslIndex] = left[leftIndex];
                 leftIndex++;
                 rslIndex++;
                 continue;
             }
-
             if (left[leftIndex] < right[rightIndex]) {
                 rsl[rslIndex] = left[leftIndex];
                 leftIndex++;
