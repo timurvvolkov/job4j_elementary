@@ -5,6 +5,5 @@ public class Ball {
     }
 
     public void leaveWolf(Wolf2 wolf) {
-
     }
 }
