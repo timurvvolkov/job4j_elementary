@@ -15,11 +15,36 @@ public class FindEl {
         return rsl;
     }
 
-    public static void main(String[] args) {
-        String[] value = {"one", "two", "three", "four", "five"};
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseException {
+        for (String abuse : abuses) {
+            if (abuse.equals(value)) {
+                throw new ElementAbuseException("abuse element detected");
+            }
+        }
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
         try {
-            indexOf(value, "six");
-        } catch (ElementNotFoundException e) {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        String[] values = {"one", "two", "three", "four", "five"};
+//        try {
+//            indexOf(value, "six");
+//        } catch (ElementNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        String[] abuses = {"six", "seven", "eight", "nine", "ten", "five"};
+        try {
+            process(values, "five", abuses);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
