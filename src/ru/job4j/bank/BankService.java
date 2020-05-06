@@ -9,10 +9,8 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!users.containsKey(user)) {
-            List<Account> accounts = new ArrayList<Account>();
-            users.put(user, accounts);
-        }
+        List<Account> accounts = new ArrayList<Account>();
+        users.putIfAbsent(user, accounts);
     }
 
     public void addAccount(String passport, Account account) {
@@ -54,26 +52,21 @@ public class BankService {
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = true;
-        User srcUser = findByPassport(srcPassport);
-        User destUser = findByPassport(destPassport);
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
         boolean noMoney = amount > srcAccount.getBalance() ? true : false;
         if (srcAccount == null || destAccount == null || noMoney) {
             rsl = false;
         } else {
-            List<Account> srcAccounts = users.get(srcUser);
-            List<Account> destAccounts = users.get(destUser);
+            List<Account> srcAccounts = users.get(findByPassport(srcPassport));
+            List<Account> destAccounts = users.get(findByPassport(destPassport));
             int srcIndex = srcAccounts.indexOf(srcAccount);
             int destIndex = destAccounts.indexOf(destAccount);
             Account newSrcAccount = new Account(srcAccount.getRequisite(), srcAccount.getBalance() - amount);
             Account newDestAccount = new Account(destAccount.getRequisite(), destAccount.getBalance() + amount);
             srcAccounts.set(srcIndex, newSrcAccount);
             destAccounts.set(destIndex, newDestAccount);
-            users.putIfAbsent(srcUser, srcAccounts);
-            users.putIfAbsent(destUser, destAccounts);
         }
-
         return rsl;
     }
 
