@@ -58,14 +58,8 @@ public class BankService {
         if (srcAccount == null || destAccount == null || noMoney) {
             rsl = false;
         } else {
-            List<Account> srcAccounts = users.get(findByPassport(srcPassport));
-            List<Account> destAccounts = users.get(findByPassport(destPassport));
-            int srcIndex = srcAccounts.indexOf(srcAccount);
-            int destIndex = destAccounts.indexOf(destAccount);
-            Account newSrcAccount = new Account(srcAccount.getRequisite(), srcAccount.getBalance() - amount);
-            Account newDestAccount = new Account(destAccount.getRequisite(), destAccount.getBalance() + amount);
-            srcAccounts.set(srcIndex, newSrcAccount);
-            destAccounts.set(destIndex, newDestAccount);
+            srcAccount.setBalance(srcAccount.getBalance() - amount);
+            destAccount.setBalance(destAccount.getBalance() + amount);
         }
         return rsl;
     }
