@@ -9,22 +9,18 @@ public class Departments {
             String start = "";
             boolean firstEl = true;
             for (String el : value.split("/")) {
-                if (firstEl) {
-                    tmp.add(el);
-                    firstEl = false;
-                    start += el;
-                } else {
-                    tmp.add(start + "/" + el);
-                    start = start + "/" + el;
-                }
+                tmp.add(start + el);
+                start = start + el + "/";
             }
         }
         return new ArrayList<>(tmp);
     }
 
     public static void sortAsc(List<String> orgs) {
+        Collections.sort(orgs, Comparator.naturalOrder());
     }
 
     public static void sortDesc(List<String> orgs) {
+        Collections.sort(orgs, new DepDescComp());
     }
 }
