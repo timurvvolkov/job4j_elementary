@@ -1,4 +1,4 @@
-package ru.job4j.streamapi;
+package ru.job4j.stream;
 
 public class Student {
     private String surname;

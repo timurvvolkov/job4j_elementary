@@ -1,9 +1,6 @@
-package ru.job4j.lambda;
+package ru.job4j.stream;
 
 import org.junit.Test;
-import ru.job4j.streamapi.Address;
-import ru.job4j.streamapi.Profile;
-import ru.job4j.streamapi.Profiles;
 
 import java.util.Arrays;
 import java.util.List;
