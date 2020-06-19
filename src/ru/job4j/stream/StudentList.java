@@ -10,7 +10,8 @@ public class StudentList {
                 .collect(
                         Collectors.toMap(
                                 e -> e.getSurname(),
-                                e -> e
+                                e -> e,
+                                (v1, v2) -> v1
                         )
                 );
     }
