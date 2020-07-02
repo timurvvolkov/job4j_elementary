@@ -30,11 +30,11 @@ public class DepDescCompTest {
 
     @Test
     public void fullTest() {
-//        List<String> input = Arrays.asList("k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2", "k1/sk2",
-//                                           "k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2");
-//        List<String> expect = List.of("k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2",
-//                                      "k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2", "k1/sk2");
-//        Collections.sort(input, new DepDescComp());
-//        assertThat(input, is(expect));
+        List<String> input = Arrays.asList("k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2", "k1/sk2",
+                                           "k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2");
+        List<String> expect = List.of("k2", "k2/sk1", "k2/sk1/ssk1", "k2/sk1/ssk2",
+                                      "k1", "k1/sk1", "k1/sk1/ssk1", "k1/sk1/ssk2", "k1/sk2");
+        Collections.sort(input, new DepDescComp());
+        assertThat(input, is(expect));
     }
 }
