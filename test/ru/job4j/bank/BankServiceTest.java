@@ -14,14 +14,14 @@ public class BankServiceTest {
         assertThat(bank.findByPassport("3434").get(), is(user));
     }
 
-    @Test
-    public void whenEnterInvalidPassport() {
-        User user = new User("3434", "Petr Arsentev");
-        BankService bank = new BankService();
-        bank.addUser(user);
-        bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        assertThat(bank.findByRequisite("34", "5546").isEmpty(), is(true));
-    }
+//    @Test
+//    public void whenEnterInvalidPassport() {
+//        User user = new User("3434", "Petr Arsentev");
+//        BankService bank = new BankService();
+//        bank.addUser(user);
+//        bank.addAccount(user.getPassport(), new Account("5546", 150D));
+//        assertThat(bank.findByRequisite("34", "5546").isEmpty(), is(true));
+//    }
 
     @Test
     public void addAccount() {

@@ -12,13 +12,13 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-        var index = 0;
-        for (var element : tasks) {
-            if (task.getPriority() > element.getPriority()) {
-                index++;
-            }
-        }
-        this.tasks.add(index, task);
+//        var index = 0;
+//        for (var element : tasks) {
+//            if (task.getPriority() > element.getPriority()) {
+//                index++;
+//            }
+//        }
+//        this.tasks.add(index, task);
     }
 
     public Task take() {
